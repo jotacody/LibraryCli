@@ -1,12 +1,14 @@
 package entities;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 public class User {
+    private Integer id;
     private String name;
     private String email;
-    private List<Books> loanBooks;
+    private List<Book> loanBooks = new ArrayList<>();
 
     public User() {
     }
@@ -14,6 +16,14 @@ public class User {
     public User(String name, String email) {
         this.name = name;
         this.email = email;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -32,11 +42,11 @@ public class User {
         this.email = email;
     }
 
-    public List<Books> getLoanBooks() {
+    public List<Book> getLoanBooks() {
         return loanBooks;
     }
 
-    public void setLoanBooks(List<Books> loanBooks) {
+    public void setLoanBooks(List<Book> loanBooks) {
         this.loanBooks = loanBooks;
     }
 
@@ -54,10 +64,10 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" +
-                "name='" + name + '\'' +
-                ", email='" + email + '\'' +
-                ", loanBooks=" + loanBooks +
-                '}';
+        return "User {" +
+                "\n  Name: " + name +
+                "\n  Email: " + email +
+                "\n  Loaned Books: " + loanBooks +
+                "\n}";
     }
 }
