@@ -1,4 +1,4 @@
-package services;
+package model.services;
 
 import entities.Book;
 import entities.Loan;

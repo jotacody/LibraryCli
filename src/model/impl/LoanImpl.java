@@ -1,9 +1,9 @@
-package impl;
+package model.impl;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
-import services.LoanService;
+import model.services.LoanService;
 import entities.Book;
 import entities.Loan;
 import entities.User;

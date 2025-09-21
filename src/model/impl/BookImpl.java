@@ -1,9 +1,9 @@
-package impl;
+package model.impl;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
-import services.BookService;
+import model.services.BookService;
 import entities.Book;
 
 import java.io.*;
