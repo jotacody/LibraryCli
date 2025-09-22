@@ -1,1 +1,9 @@
-[]
+[
+  {
+    "id": 1,
+    "title": "Harry Potter",
+    "author": "J. K. Rowling",
+    "year": "1997",
+    "loan": true
+  }
+]

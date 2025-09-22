@@ -7,10 +7,9 @@ import model.entities.User;
 import java.util.List;
 
 public interface LoanService {
-    public void insertLoan(Loan l);
-    public void deleteLoan(Loan l);
-    public void borrowBook(User u, Book b);
-    public void returnBook(User u, Book b);
+    public void borrowBook(Loan l);
+    public void returnBook(Loan l);
+    public Loan searchLoan(Integer loanId);
     public void saveToJson();
     public List<Loan> loadFromJson();
 }

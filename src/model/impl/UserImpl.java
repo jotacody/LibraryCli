@@ -53,6 +53,16 @@ public class UserImpl implements UserService {
     }
 
     @Override
+    public User searchUser(Integer userid) {
+        for (User u : users){
+            if (u.getId().equals(userid)){
+                return u;
+            }
+        }
+        return null;
+    }
+
+    @Override
     public void saveToJson() {
 
         if (users.isEmpty()){

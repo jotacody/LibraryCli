@@ -9,6 +9,7 @@ public interface UserService {
     public void insertUser(User u);
     public void deleteUser(Integer id);
     public void updateUser(Integer id, String name, String email);
+    public User searchUser(Integer userid);
     public void saveToJson();
     public List<User> loadFromJson();
 }

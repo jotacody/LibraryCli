@@ -9,6 +9,7 @@ public interface BookService {
     public void insertBook(Book b);
     public void removeBook(Integer id);
     public void updateBook(Integer id, String title, String author, String year);
+    public Book searchBook(Integer bookId);
     public void saveToJson();
     public List<Book> loadFromJson();
 }

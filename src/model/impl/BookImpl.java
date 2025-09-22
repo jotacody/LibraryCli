@@ -53,6 +53,16 @@ public class BookImpl implements BookService {
     }
 
     @Override
+    public Book searchBook(Integer bookId) {
+        for (Book b : books){
+            if (b.getId().equals(bookId)){
+                return b;
+            }
+        }
+        return null;
+    }
+
+    @Override
     public void saveToJson() {
 
         if (books.isEmpty()){

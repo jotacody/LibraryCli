@@ -11,6 +11,8 @@ import model.entities.User;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public class LoanImpl implements LoanService {
     private Gson gson = new GsonBuilder().setPrettyPrinting().create();
@@ -18,27 +20,53 @@ public class LoanImpl implements LoanService {
     private File file = new File(FILE_NAME);
     private List<Loan> loans = new ArrayList<>();
 
+    public List<Loan> getLoans() {
+        return loans;
+    }
 
-    @Override
-    public void insertLoan(Loan l) {
+    public Integer newId() {
+        int id = 1;
+        Set<Integer> ids = loans.stream()
+                .map(Loan::getId)
+                .collect(Collectors.toSet());
+
+        while (ids.contains(id)){
+            id++;
+        }
+        return id;
+    }
+
+    private void insertLoan(Loan l) {
+        l.setId(newId());
         loans.add(l);
     }
 
-    @Override
-    public void deleteLoan(Loan l) {
-        loans.removeIf(t -> t.equals(l.getId()));
+    private void deleteLoan(Loan l) {
+        loans.remove(l);
     }
 
     @Override
-    public void borrowBook(User u, Book b) {
-        b.setLoan(true);
-        u.getLoanBooks().add(b);
+    public void borrowBook(Loan l) {
+        insertLoan(l);
+        l.getBook().setLoan(true);
+        l.getUser().getLoanBooks().add(l.getBook());
     }
 
     @Override
-    public void returnBook(User u, Book b) {
-        b.setLoan(false);
-        u.getLoanBooks().removeIf(t -> t.getTitle().equals(b.getTitle()));
+    public void returnBook(Loan l) {
+        l.getBook().setLoan(false);
+        l.getUser().getLoanBooks().removeIf(t -> t.getTitle().equals(l.getBook().getTitle()));
+        deleteLoan(l);
+    }
+
+    @Override
+    public Loan searchLoan(Integer loanId) {
+        for (Loan l : loans){
+            if (l.getId().equals(loanId)){
+                return l;
+            }
+        }
+        return null;
     }
 
     @Override
