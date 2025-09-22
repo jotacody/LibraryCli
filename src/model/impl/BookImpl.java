@@ -3,12 +3,15 @@ package model.impl;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
+import model.entities.User;
 import model.services.BookService;
-import entities.Book;
+import model.entities.Book;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public class BookImpl implements BookService {
     private Gson gson = new GsonBuilder().setPrettyPrinting().create();
@@ -16,14 +19,37 @@ public class BookImpl implements BookService {
     private String FILE_NAME = "files/books.json";
     private File file = new File(FILE_NAME);
 
+    public List<Book> getBooks() {
+        return books;
+    }
+
+    @Override
+    public Integer newId() {
+        int id = 1;
+        Set<Integer> ids = books.stream()
+                .map(Book::getId)
+                .collect(Collectors.toSet());
+
+        while (ids.contains(id)){
+            id++;
+        }
+        return id;
+    }
+
     @Override
     public void insertBook(Book b) {
         books.add(b);
     }
 
     @Override
-    public void removeBook(String title) {
-        books.removeIf(t -> t.getTitle().equals(title));
+    public void removeBook(Integer id) {
+        books.removeIf(t -> t.getId().equals(id));
+    }
+
+    @Override
+    public void updateBook(Integer id, String title, String author, String year) {
+        books.stream().filter(b -> b.getId().equals(id))
+                .forEach(b -> {b.setTitle(title); b.setAuthor(author); b.setYear(year);});
     }
 
     @Override

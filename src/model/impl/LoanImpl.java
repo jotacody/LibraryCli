@@ -4,9 +4,9 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import model.services.LoanService;
-import entities.Book;
-import entities.Loan;
-import entities.User;
+import model.entities.Book;
+import model.entities.Loan;
+import model.entities.User;
 
 import java.io.*;
 import java.util.ArrayList;

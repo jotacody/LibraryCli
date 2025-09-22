@@ -1,0 +1,14 @@
+[
+  {
+    "id": 2,
+    "name": "jorge",
+    "email": "jorge@gmail.com",
+    "loanBooks": []
+  },
+  {
+    "id": 1,
+    "name": "joao",
+    "email": "joao@gmail.com",
+    "loanBooks": []
+  }
+]

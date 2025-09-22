@@ -4,11 +4,14 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import model.services.UserService;
-import entities.User;
+import model.entities.User;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public class UserImpl implements UserService {
     private Gson gson = new GsonBuilder().setPrettyPrinting().create();
@@ -21,6 +24,19 @@ public class UserImpl implements UserService {
     }
 
     @Override
+    public Integer newId() {
+        int id = 1;
+        Set<Integer> ids = users.stream()
+                .map(User::getId)
+                .collect(Collectors.toSet());
+
+        while (ids.contains(id)){
+            id++;
+        }
+        return id;
+    }
+
+    @Override
     public void insertUser(User u) {
         users.add(u);
     }
@@ -28,6 +44,12 @@ public class UserImpl implements UserService {
     @Override
     public void deleteUser(Integer id) {
         users.removeIf(t -> t.getId().equals(id));
+    }
+
+    @Override
+    public void updateUser(Integer id, String name, String email) {
+        users.stream().filter(u -> u.getId().equals(id))
+                .forEach(u -> {u.setName(name); u.setEmail(email);});
     }
 
     @Override

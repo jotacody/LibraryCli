@@ -1,4 +1,4 @@
-package entities;
+package model.entities;
 
 import java.util.Objects;
 
@@ -7,17 +7,16 @@ public class Book {
     private String title;
     private String author;
     private String year;
-    private String synopsis;
     private Boolean loan;
 
     public Book() {
     }
 
-    public Book(String title, String author, String year, String synopsis) {
+    public Book(Integer id, String title, String author, String year) {
+        this.id = id;
         this.title = title;
         this.author = author;
         this.year = year;
-        this.synopsis = synopsis;
         this.loan = false;
     }
 
@@ -53,14 +52,6 @@ public class Book {
         this.year = year;
     }
 
-    public String getSynopsis() {
-        return synopsis;
-    }
-
-    public void setSynopsis(String synopsis) {
-        this.synopsis = synopsis;
-    }
-
     public Boolean getLoan() {
         return loan;
     }
@@ -73,21 +64,23 @@ public class Book {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Book book = (Book) o;
-        return Objects.equals(title, book.title);
+        return Objects.equals(id, book.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(title);
+        return Objects.hashCode(id);
     }
 
     @Override
     public String toString() {
-        return "[Book: " +
-                "Title: " + title +
-                ", Author: " + author +
-                ", Loan: " + loan +
-                "]"
+        return "{\nBook> \n" +
+                "Book id: " + id +
+                "\nTitle: " + title +
+                "\nAuthor: " + author +
+                "\nYear: " + year +
+                "\nLoan: " + loan +
+                "\n}"
                 ;
     }
 

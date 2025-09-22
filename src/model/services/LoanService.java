@@ -1,8 +1,8 @@
 package model.services;
 
-import entities.Book;
-import entities.Loan;
-import entities.User;
+import model.entities.Book;
+import model.entities.Loan;
+import model.entities.User;
 
 import java.util.List;
 

@@ -1,4 +1,6 @@
-package entities;
+package model.entities;
+
+import model.impl.UserImpl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +15,8 @@ public class User {
     public User() {
     }
 
-    public User(String name, String email) {
+    public User(Integer id, String name, String email) {
+        this.id = id;
         this.name = name;
         this.email = email;
     }
@@ -46,10 +49,6 @@ public class User {
         return loanBooks;
     }
 
-    public void setLoanBooks(List<Book> loanBooks) {
-        this.loanBooks = loanBooks;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
@@ -65,6 +64,7 @@ public class User {
     @Override
     public String toString() {
         return "User {" +
+                "\n  Id:" + id +
                 "\n  Name: " + name +
                 "\n  Email: " + email +
                 "\n  Loaned Books: " + loanBooks +
