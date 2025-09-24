@@ -9,7 +9,6 @@ import model.entities.User;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -48,8 +47,8 @@ public class UserImpl implements UserService {
 
     @Override
     public void updateUser(Integer id, String name, String email) {
-        users.stream().filter(u -> u.getId().equals(id))
-                .forEach(u -> {u.setName(name); u.setEmail(email);});
+            users.stream().filter(u -> u.getId().equals(id))
+                    .forEach(u -> {u.setName(name); u.setEmail(email);});
     }
 
     @Override
@@ -64,13 +63,6 @@ public class UserImpl implements UserService {
 
     @Override
     public void saveToJson() {
-
-        if (users.isEmpty()){
-            if (file.exists()){
-                file.delete();
-            }
-        }
-
         try (Writer writer = new FileWriter(FILE_NAME)){
             gson.toJson(users, writer);
         }catch (IOException e){

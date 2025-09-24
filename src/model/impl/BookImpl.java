@@ -64,12 +64,6 @@ public class BookImpl implements BookService {
 
     @Override
     public void saveToJson() {
-
-        if (books.isEmpty()){
-            if (file.exists()){
-                file.delete();
-            }
-        }
         try (Writer writer = new FileWriter(FILE_NAME)){
             gson.toJson(books, writer);
         }catch (IOException e){

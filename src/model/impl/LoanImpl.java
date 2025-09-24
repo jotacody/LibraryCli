@@ -71,13 +71,6 @@ public class LoanImpl implements LoanService {
 
     @Override
     public void saveToJson() {
-
-        if (loans.isEmpty()){
-            if (file.exists()){
-                file.delete();
-            }
-        }
-
         try (Writer writer = new FileWriter(FILE_NAME)){
             gson.toJson(loans, writer);
         }catch (IOException e){
