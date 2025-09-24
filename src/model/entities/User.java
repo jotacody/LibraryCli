@@ -67,7 +67,7 @@ public class User {
                 "\n  Id:" + id +
                 "\n  Name: " + name +
                 "\n  Email: " + email +
-                "\n  Loaned Books: " + loanBooks +
+                "\n  Loaned Books: " + loanBooks.stream().map(Book::getTitle).toList() +
                 "\n}";
     }
 }

@@ -3,7 +3,6 @@ package model.impl;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
-import model.entities.User;
 import model.services.BookService;
 import model.entities.Book;
 

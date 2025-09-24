@@ -3,7 +3,7 @@
     <output-path>$PROJECT_DIR$/</output-path>
     <root id="archive" name="LibraryCLI.jar">
       <element id="module-output" name="LibraryCLI" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/jars/gson-2.10.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../../../java-libs/gson-2.10.1.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>
