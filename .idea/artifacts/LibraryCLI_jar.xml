@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="LibraryCLI:jar">
+    <output-path>$PROJECT_DIR$/</output-path>
+    <root id="archive" name="LibraryCLI.jar">
+      <element id="module-output" name="LibraryCLI" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/jars/gson-2.10.1.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
