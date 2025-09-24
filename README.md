@@ -42,7 +42,7 @@ cd LibraryCli
 
 # Run the application
 java -jar book-shop.jar
-
+```
 
   ## 📜 License
 
@@ -56,3 +56,4 @@ See the [LICENSE](LICENSE) file for more details.
 - GitHub: [JoaoPedro-cody](https://github.com/JoaoPedro-cody)  
 - Email: Codyla2313@gmail.com  
 - LinkedIn: https://www.linkedin.com/in/joao-dev-pedro/  
+
