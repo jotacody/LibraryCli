@@ -1,12 +1,12 @@
-# 📇 ContactsManager
+# 📚 LibraryCLI
 
-![Java](https://img.shields.io/badge/Java-17-red)
-![IDE](https://img.shields.io/badge/IDE-IntelliJ%20IDEA-blueviolet)
-![License](https://img.shields.io/badge/License-MIT-green)
-![Last Commit](https://img.shields.io/github/last-commit/JoaoPedro-cody/ContactsManager)
+![Java](https://img.shields.io/badge/Java-17-red)  
+![IDE](https://img.shields.io/badge/IDE-IntelliJ%20IDEA-blueviolet)  
+![License](https://img.shields.io/badge/License-MIT-green)  
+![Last Commit](https://img.shields.io/github/last-commit/JoaoPedro-cody/LibraryCli)  
 
-> A simple contact manager developed by João Pedro.  
-> It allows you to create, read, update, and delete (CRUD) contacts, helping you organize people’s information in a practical way.
+> **LibraryCLI** is a command-line application developed by **João Pedro**.  
+> It allows you to create, read, update, and delete (CRUD) users and books, as well as manage book loans.  
 
 ---
 
@@ -16,9 +16,16 @@
 - **IDE:** IntelliJ IDEA  
 - **Version Control:** Git & GitHub  
 
+---
+
 ## 🧰 Features
 
-Create, read, update and delete user and book, borrow books up to 3 per user and with a 7-day term
+- Create, read, update, and delete **users**  
+- Create, read, update, and delete **books**  
+- Borrow up to **3 books per user**  
+- Automatic **7-day loan period**  
+
+---
 
 ## 💻 How to Run
 
@@ -26,14 +33,16 @@ Create, read, update and delete user and book, borrow books up to 3 per user and
 - Java **17+** installed
 
 ### Steps
-- Clone the repository  
-  `git clone https://github.com/JoaoPedro-cody/LibraryCli.git`
+```bash
+# Clone the repository
+git clone https://github.com/JoaoPedro-cody/LibraryCli.git
 
-- Enter the project folder  
-  `cd LibraryCli`
+# Enter the project folder
+cd LibraryCli
 
-- Run 
-  `java -jar book-shop.jar`
+# Run the application
+java -jar book-shop.jar
+
 
   ## 📜 License
 
