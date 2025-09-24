@@ -12,7 +12,7 @@
 
 ## 🚀 Technologies
 
-- **Language:** Java 21  
+- **Language:** Java 17  
 - **IDE:** IntelliJ IDEA  
 - **Version Control:** Git & GitHub  
 
