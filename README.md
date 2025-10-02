@@ -1,4 +1,4 @@
-# 📚 LibraryCLI
+#  LibraryCLI
 
 ![Java](https://img.shields.io/badge/Java-17-red)  
 ![IDE](https://img.shields.io/badge/IDE-IntelliJ%20IDEA-blueviolet)  
@@ -10,7 +10,7 @@
 
 ---
 
-## 🚀 Technologies
+## Technologies
 
 - **Language:** Java 17  
 - **IDE:** IntelliJ IDEA  
@@ -18,7 +18,7 @@
 
 ---
 
-## 🧰 Features
+##  Features
 
 - Create, read, update, and delete **users**  
 - Create, read, update, and delete **books**  
@@ -27,7 +27,7 @@
 
 ---
 
-## 💻 How to Run
+##  How to Run
 
 ### Prerequisites
 - Java **17+** installed
@@ -44,14 +44,14 @@ cd LibraryCli
 java -jar book-shop.jar
 ```
 
-  ## 📜 License
+  ##  License
 
 This project is licensed under the **MIT License**.  
 See the [LICENSE](LICENSE) file for more details.  
 
 ---
 
-## 📬 Contact
+##  Contact
 
 - GitHub: [JoaoPedro-cody](https://github.com/JoaoPedro-cody)  
 - Email: Codyla2313@gmail.com  
