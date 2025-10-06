@@ -9,26 +9,22 @@ import model.entities.Loan;
 import model.entities.User;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class LoanImpl implements LoanService {
     private Gson gson = new GsonBuilder().setPrettyPrinting().create();
     private String FILE_NAME = "files/loans.json";
     private File file = new File(FILE_NAME);
-    private List<Loan> loans = new ArrayList<>();
+    private Map<Integer, Loan> loans = new HashMap<>();
 
-    public List<Loan> getLoans() {
+    public Map<Integer, Loan> getLoans() {
         return loans;
     }
 
     public Integer newId() {
         int id = 1;
-        Set<Integer> ids = loans.stream()
-                .map(Loan::getId)
-                .collect(Collectors.toSet());
+        Set<Integer> ids = loans.keySet();
 
         while (ids.contains(id)){
             id++;
@@ -38,11 +34,11 @@ public class LoanImpl implements LoanService {
 
     private void insertLoan(Loan l) {
         l.setId(newId());
-        loans.add(l);
+        loans.put(l.getId(), l);
     }
 
     private void deleteLoan(Loan l) {
-        loans.remove(l);
+        loans.remove(l.getId());
     }
 
     @Override
@@ -61,12 +57,7 @@ public class LoanImpl implements LoanService {
 
     @Override
     public Loan searchLoan(Integer loanId) {
-        for (Loan l : loans){
-            if (l.getId().equals(loanId)){
-                return l;
-            }
-        }
-        return null;
+        return loans.get(loanId);
     }
 
     @Override
@@ -79,18 +70,18 @@ public class LoanImpl implements LoanService {
     }
 
     @Override
-    public List<Loan> loadFromJson() {
+    public Map<Integer, Loan> loadFromJson() {
         if (file.exists()){
             try (Reader reader = new FileReader(FILE_NAME)){
-                loans = gson.fromJson(reader, new TypeToken<List<Loan>>(){}.getType());
+                loans = gson.fromJson(reader, new TypeToken<Map<Integer, Loan>>(){}.getType());
             }catch (FileNotFoundException e){
-                loans = new ArrayList<>();
+                loans = new HashMap<>();
             }
             catch (IOException e){
                 throw new RuntimeException(e.getMessage());
             }
         }else {
-            return new ArrayList<>();
+            return new HashMap<>();
         }
 
         return loans;

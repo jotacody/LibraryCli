@@ -3,6 +3,7 @@ package model.services;
 import model.entities.User;
 
 import java.util.List;
+import java.util.Map;
 
 public interface UserService {
     public Integer newId();
@@ -11,5 +12,5 @@ public interface UserService {
     public void updateUser(Integer id, String name, String email);
     public User searchUser(Integer userid);
     public void saveToJson();
-    public List<User> loadFromJson();
+    public Map<Integer, User> loadFromJson();
 }

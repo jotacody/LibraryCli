@@ -3,6 +3,7 @@ package model.services;
 import model.entities.Book;
 
 import java.util.List;
+import java.util.Map;
 
 public interface BookService {
     public Integer newId();
@@ -11,5 +12,5 @@ public interface BookService {
     public void updateBook(Integer id, String title, String author, String year);
     public Book searchBook(Integer bookId);
     public void saveToJson();
-    public List<Book> loadFromJson();
+    public Map<Integer, Book> loadFromJson();
 }

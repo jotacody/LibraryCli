@@ -8,6 +8,7 @@ import model.impl.LoanImpl;
 import model.impl.UserImpl;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Menu {
@@ -85,7 +86,7 @@ public class Menu {
                         System.out.println("\nNo registered user!");
                         break;
                     }
-                    userImpl.getUsers().forEach(System.out::println);
+                    System.out.println(userImpl.getUsers());
                     break;
                 case 0:
                     break;
@@ -156,11 +157,11 @@ public class Menu {
                     bookImpl.removeBook(idDelete);
                     break;
                 case 4:
-                    List<Book> list = bookImpl.getBooks();
+                    Map<Integer, Book> list = bookImpl.getBooks();
                     if (list.isEmpty()){
                         System.out.println("\nNo registered book");
                     }else {
-                        list.forEach(System.out::println);
+                        System.out.println(list);
                     }
                     break;
                 case 0:
@@ -224,7 +225,7 @@ public class Menu {
                         System.out.println("\nNo registered Loan");
                         break;
                     }
-                    loanImpl.getLoans().forEach(System.out::println);
+                    System.out.println(loanImpl.getLoans());
                     break;
                 case 0:
                     break;

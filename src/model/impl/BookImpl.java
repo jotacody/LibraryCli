@@ -7,28 +7,22 @@ import model.services.BookService;
 import model.entities.Book;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
+import java.util.*;
 
 public class BookImpl implements BookService {
     private Gson gson = new GsonBuilder().setPrettyPrinting().create();
-    private List<Book> books = new ArrayList<>();
     private String FILE_NAME = "files/books.json";
     private File file = new File(FILE_NAME);
+    private Map<Integer, Book> books = new HashMap<>();
 
-    public List<Book> getBooks() {
+    public Map<Integer, Book> getBooks() {
         return books;
     }
 
     @Override
     public Integer newId() {
         int id = 1;
-        Set<Integer> ids = books.stream()
-                .map(Book::getId)
-                .collect(Collectors.toSet());
-
+        Set<Integer> ids = books.keySet();
         while (ids.contains(id)){
             id++;
         }
@@ -37,28 +31,27 @@ public class BookImpl implements BookService {
 
     @Override
     public void insertBook(Book b) {
-        books.add(b);
+        books.put(b.getId(), b);
     }
 
     @Override
     public void removeBook(Integer id) {
-        books.removeIf(t -> t.getId().equals(id));
+        books.remove(id);
     }
 
     @Override
     public void updateBook(Integer id, String title, String author, String year) {
-        books.stream().filter(b -> b.getId().equals(id))
-                .forEach(b -> {b.setTitle(title); b.setAuthor(author); b.setYear(year);});
+        Book book = books.get(id);
+        if (book != null){
+            book.setYear(year);
+            book.setAuthor(author);
+            book.setTitle(title);
+        }
     }
 
     @Override
     public Book searchBook(Integer bookId) {
-        for (Book b : books){
-            if (b.getId().equals(bookId)){
-                return b;
-            }
-        }
-        return null;
+        return books.get(bookId);
     }
 
     @Override
@@ -71,16 +64,16 @@ public class BookImpl implements BookService {
     }
 
     @Override
-    public List<Book> loadFromJson() {
+    public Map<Integer, Book> loadFromJson() {
 
         if (file.exists()){
             try (Reader reader = new FileReader(FILE_NAME)) {
-                books = gson.fromJson(reader, new TypeToken<List<Book>>(){}.getType());
+                books = gson.fromJson(reader, new TypeToken<Map<Integer, Book>>(){}.getType());
             }catch (IOException e){
                 throw new RuntimeException();
             }
         } else {
-            return new ArrayList<>();
+            return new HashMap<>();
         }
         return books;
     }
